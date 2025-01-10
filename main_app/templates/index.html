@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Cat Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Cat</h1>
+        <form id="upload-form" action="/getcats/" method="post" enctype="multipart/form-data">
+            <label for="image">Choose a Cat to detect</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+            <input type="submit" value="Detect Cat">
+        </form>
+        <h2>Detected Cats Appear Below</h2>
+        <img id="output-image" src="" alt="">
+    </div>
+    <script src="/static/js/upload_script.js"></script>
+</body>
+</html>
