@@ -47,6 +47,6 @@ Make sure you have the following installed:
 For any questions or feedback, feel free to reach out to:
 
     Email: phillipmackinnonwork@proton.me
-    GitHub: @PhillMckinnon 
+    GitHub: @PhillMackinnon 
 
 Happy cat detecting! 😺
