@@ -7,13 +7,19 @@ import os
 import io
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'model_folder/uploaded_images_folder'
-model = YOLO("model_folder/best.pt")
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        model = YOLO("model_folder/best.pt")
+    return model
 def detect_and_annotate(image, conf=0.25, rectangle_thickness=3, text_size=70):
     image_pil = image if (isinstance(image, Image.Image)) else Image.fromarray(image)
     cat_detected = False
     draw = ImageDraw.Draw(image_pil)
     font = ImageFont.truetype("arial.ttf", text_size)
-    results = model.predict(image, conf=conf)
+    results = get_model().predict(image, conf=conf)
     for result in results:
         for box in result.boxes:
             draw.rectangle(
@@ -42,6 +48,7 @@ def apply_detection():
     file = request.files.get('image')
     if not file or file.filename == '':
         return 'No file uploaded', 400
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(file_path)
     image = Image.open(file_path).convert("RGB")
