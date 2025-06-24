@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r main_app/requirements.txt
-        pip install pytest pytest-cov
+        pip install pytest coverage
 
     - name: Run tests and coverage
       run: |
