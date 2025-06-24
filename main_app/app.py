@@ -18,7 +18,8 @@ def detect_and_annotate(image, conf=0.25, rectangle_thickness=3, text_size=70):
     image_pil = image if (isinstance(image, Image.Image)) else Image.fromarray(image)
     cat_detected = False
     draw = ImageDraw.Draw(image_pil)
-    font = ImageFont.truetype("arial.ttf", text_size)
+    font_path = os.path.join(os.path.dirname(__file__), "fonts", "arial.ttf")
+    font = ImageFont.truetype(font_path, text_size)
     results = get_model().predict(image, conf=conf)
     for result in results:
         for box in result.boxes:
