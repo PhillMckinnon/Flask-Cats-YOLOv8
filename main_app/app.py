@@ -1,3 +1,7 @@
+import torch
+from torch.serialization import add_safe_globals
+from ultralytics.nn.tasks import DetectionModel
+add_safe_globals([DetectionModel])
 from PIL import Image, ImageFont, ImageDraw
 from flask import Flask, request, render_template, send_file
 from ultralytics import YOLO
