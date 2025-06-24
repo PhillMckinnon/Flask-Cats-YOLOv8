@@ -35,6 +35,8 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage.xml
+        flags: unittests
+        name: codecov-flask
 
   docker:
     needs: test   # <-- this makes docker job run *only after* test passes
