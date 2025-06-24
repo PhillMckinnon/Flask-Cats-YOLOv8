@@ -1,6 +1,8 @@
 from PIL import Image, ImageFont, ImageDraw
 from flask import Flask, request, render_template, send_file
 from ultralytics import YOLO
+from dotenv import load_dotenv
+load_dotenv()
 import os
 import io
 app = Flask(__name__)
@@ -50,4 +52,4 @@ def apply_detection():
     os.remove(file_path)
     return send_file(buf, mimetype='image/png')
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=os.environ.get("PORT", 8080))

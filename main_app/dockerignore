@@ -1,0 +1,33 @@
+# Version control
+.git/
+.gitignore
+
+# Python artifacts
+__pycache__/
+pyinstaller-hooks/
+
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+.whisper/
+.coqui_tts/
+
+# Development environments
+.env
+.venv
+.
+.
+.
+
+# Build artifacts
+dist/
+build/
+server.spec
+*.egg-info/
+
+# Local development files
+data/
+logs/
+*.log
