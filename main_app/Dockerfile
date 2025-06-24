@@ -20,12 +20,10 @@ RUN apt-get remove -y curl || true && \
     rm -rf /var/lib/apt/lists/*
 
 COPY app.py .
+COPY fonts .
 COPY model_folder ./model_folder
 COPY static ./static
 COPY templates ./templates
-
-
-ENV PORT=8080
 
 EXPOSE 8080
 CMD ["python3", "app.py"]
