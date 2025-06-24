@@ -4,6 +4,7 @@
 
 # Python artifacts
 __pycache__/
+.idea/
 pyinstaller-hooks/
 
 *.py[cod]
