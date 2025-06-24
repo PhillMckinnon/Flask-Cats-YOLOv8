@@ -21,7 +21,7 @@ RUN apt-get remove -y curl || true && \
 
 COPY app.py .
 COPY fonts ./fonts
-COPY model_folder ./model_folder
+COPY model_folder/* ./model_folder
 COPY static ./static
 COPY templates ./templates
 

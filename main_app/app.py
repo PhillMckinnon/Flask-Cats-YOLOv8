@@ -1,7 +1,3 @@
-import torch
-from torch.serialization import add_safe_globals
-from ultralytics.nn.tasks import DetectionModel
-add_safe_globals([DetectionModel])
 from PIL import Image, ImageFont, ImageDraw
 from flask import Flask, request, render_template, send_file
 from ultralytics import YOLO
@@ -11,13 +7,7 @@ import os
 import io
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'model_folder/uploaded_images_folder'
-model = None
 
-def get_model():
-    global model
-    if model is None:
-        model = YOLO("model_folder/best.pt")
-    return model
 def detect_and_annotate(image, conf=0.25, rectangle_thickness=3, text_size=70):
     image_pil = image if (isinstance(image, Image.Image)) else Image.fromarray(image)
     cat_detected = False
@@ -27,7 +17,9 @@ def detect_and_annotate(image, conf=0.25, rectangle_thickness=3, text_size=70):
         font = ImageFont.truetype(font_path, text_size)
     except OSError:
         font = ImageFont.load_default()
-    results = get_model().predict(image, conf=conf)
+    model_path = os.path.join(os.path.dirname(__file__), "model_folder", "best.pt")
+    model = YOLO(model_path)
+    results = model.predict(image, conf=conf)
     for result in results:
         for box in result.boxes:
             draw.rectangle(
