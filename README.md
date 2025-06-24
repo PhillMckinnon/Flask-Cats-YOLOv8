@@ -48,5 +48,5 @@ For any questions or feedback, feel free to reach out to:
 
     Email: phillipmckinnonwork@proton.me
     GitHub: @PhillMckinnon 
-
+[![codecov](https://codecov.io/gh/PhillMckinnon/Flask-Cats-YOLOv8/graph/badge.svg?token=JF6QMZU4PC)](https://codecov.io/gh/PhillMckinnon/Flask-Cats-YOLOv8)
 Happy cat detecting! 😺
