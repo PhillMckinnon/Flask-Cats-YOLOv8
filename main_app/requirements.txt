@@ -1,4 +1,4 @@
-torch==2.5.0+cpu
+torch==2.5.0
 Flask
 Pillow
 ultralytics
